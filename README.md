@@ -6,7 +6,7 @@ the Linux target virtual machine must have Feilong zthin installed it uses the s
 
 ## design
 
-the sample playbooks are at https://github.ibm.com/rjbrenn/zvm_ansible
+This repo is just the collection of modules. The sample playbooks are at https://github.com/IBM/zvm_ansible
 
 these modules are kinda a 1:1 wrapper around a pair of create/delete SMAPI calls
 
@@ -69,10 +69,10 @@ IPL 190
 
 Having verified that - now - on the Linux machine where you plan to run your playbooks you have to get the module collection installed.  
 
-a) git clone https://github.com/IBM/zvm_ansible_collection.git
-b) cd zvm_ansible_collection
-c) ansible-galaxy collection build --output-path ..
-d) ansible-galaxy collection install ../ibm-zvm_ansible-V.V.V.tar.gz
+1. git clone https://github.com/IBM/zvm_ansible_collection.git
+2. cd zvm_ansible_collection
+3. ansible-galaxy collection build --output-path ..
+4. ansible-galaxy collection install ../ibm-zvm_ansible-V.V.V.tar.gz
 
 The above 'building' nonsense will go away once I'm able to get this collection into shape such that the ansible community will accept it into galaxy - then you just install it directly without having to clone/build first. 
 
