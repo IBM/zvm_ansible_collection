@@ -40,6 +40,46 @@ ref: https://cloudlib4zvm.readthedocs.io/en/latest/quickstart.html#installation
 ref: https://github.com/openmainframeproject/feilong  
 ref: https://openmainframeproject.org/projects/feilong  
 
+If you are also an ICIC user you can target the "Compute" Linux machine for each z/VM LPAR since it also uses smcli to talk to SMAPI, you don't need an additional machine. OOohh thats a good point - you can also follow the ICIC docs for "Setting up z/VM" at https://www.ibm.com/docs/en/cic/1.2.0?topic=environment-setting-up-zvm for guidance on getting z/VM enabled for ICIC and/or zvm_ansible_collection 
+
+Once you have z/VM enabled , and Feilong installed on your Linux guest, you can verify its working correctly by issuing a smcli command similar to the following:
+
+```
+smcli Image_Query_DM -T OP1
+```
+
+Which should return the directory entry of the target virutal machine: 
+
+```
+IDENTITY OP1      AUTOONLY   32M   32M ABCDEFG
+INCLUDE IBMDFLT
+BUILD ON LTICVM1 USING SUBCONFIG OP1-1
+BUILD ON LTICVM3 USING SUBCONFIG OP1-2
+BUILD ON LTICVM6 USING SUBCONFIG OP1-3
+BUILD ON LTICVM7 USING SUBCONFIG OP1-4
+BUILD ON LTICVMA USING SUBCONFIG OP1-5
+BUILD ON LTICVMB USING SUBCONFIG OP1-6
+BUILD ON LTICVMC USING SUBCONFIG OP1-7
+BUILD ON LTICVMD USING SUBCONFIG OP1-8
+AUTOLOG AUTOLOG1 MAINT
+ACCOUNT IBM
+MACH ESA
+IPL 190
+```
+
+Having verified that - now - on the Linux machine where you plan to run your playbooks you have to get the module collection installed.  
+
+a) git clone https://github.com/IBM/zvm_ansible_collection.git
+b) cd zvm_ansible_collection
+c) ansible-galaxy collection build --output-path ..
+d) ansible-galaxy collection install ../ibm-zvm_ansible-V.V.V.tar.gz
+
+The above 'building' nonsense will go away once I'm able to get this collection into shape such that the ansible community will accept it into galaxy - then you just install it directly without having to clone/build first. 
+
+Uhh... this probably needs a picture. I'll get one done up and put it in here. 
+
+
+
 ## limitations
 
 SMAPI does not provide an API to manage the vlan tag of a NICDEF statement.  
