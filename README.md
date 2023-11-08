@@ -15,7 +15,7 @@ zvm_minidisk.py : Image_Disk_Create_DM / Image_Disk_Delete_DM
 zvm_startstop_user.py : Image_Activate / Image_Deactivate  
 zvm_update_user.py : Image_Definition_Update_DM  
 zvm_user.py : Image_Create_DM / Image_Delete_DM  
-zvm_device_ded.py : Image_Device_Dedicate_DM / Image_Device_Undedicate_DM
+zvm_dedicate_dev.py : Image_Device_Dedicate_DM / Image_Device_Undedicate_DM
 
 these modules are wrappers around some VM card reader/punch management tools 
 
