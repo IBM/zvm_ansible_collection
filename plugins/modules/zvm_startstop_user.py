@@ -216,7 +216,7 @@ def run_module():
         module.exit_json(**result)
 
     if result['return_code'] >= 1:
-        notreally_errs = ["Image already active", "not logged on"]
+        notreally_errs = ["Image already active", "HCPUSO045E", "not logged on"]
         # notreally_errs is a list of VM error messages that are OK within this contect
         noterror_count = 0
 
@@ -233,16 +233,15 @@ def run_module():
 
         # this is gross but I looked at alternatives and they were less readable
         # scann return stdout and stderr for
-        for i in result['return_stdout']:
-            for j in notreally_errs:
-                if i.find(j) != -1:
-                    noterror_count += 1
+        for j in notreally_errs:
+            if result['return_stdout'].find(j) != -1:
+                noterror_count += 1
         if noterror_count > 0:
             # optimistically guessing this is not an error condition
             # it might still actually be an error condition if there is a real error among the not-errors
             # will figure that out later if it ends up happening
             # exit no error
-            result['return_stdout'].append("skipping an error because its probably OK in this situation")
+            result['return_stdout'] += ">>skipping an error because its probably OK in this situation<<"
             module.exit_json(**result)
         # here we are in error condition
         errormsg = "failing return code from smcli is: " + str(result['return_code'])
