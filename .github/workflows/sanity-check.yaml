@@ -13,4 +13,4 @@ jobs:
       - run: cd $GITHUB_WORKSPACE
       - run: ansible-galaxy collection build $GITHUB_WORKSPACE
       - run: ansible-galaxy collection install ./ibm-zvm_ansible*.tar.gz
-      - run: ansible-test sanity --requirements --docker ibm/zvm_ansible
+      - run: ansible-test sanity --requirements --docker --python 3.11 ibm/zvm_ansible
