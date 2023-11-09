@@ -126,9 +126,6 @@ reason_code:
 
 
 from ansible.module_utils.basic import AnsibleModule
-import os
-import binascii
-import time
 
 
 def run_module():
@@ -294,4 +291,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-

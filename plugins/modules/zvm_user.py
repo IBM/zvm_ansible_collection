@@ -45,7 +45,8 @@ options:
         type: str
     erasemode:
         description:
-            - should we wipe the disks, if any, when destorying the user definition. note this may be synchronous and hold up a play execution till the wipe is done.
+            - should we wipe the disks, if any, when destorying the user definition. note this may be synchronous
+            -   and hold up a play execution till the wipe is done.
             - 0 = unspecified
             - 1 = do not wipe
             - 2 = wipe

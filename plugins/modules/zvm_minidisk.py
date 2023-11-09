@@ -194,7 +194,7 @@ def run_module():
         diskrpw=dict(type='str', required=False),
         diskwpw=dict(type='str', required=False),
         diskmpw=dict(type='str', required=False),
-        diskwipe=dict(type='int', required=False, choices=[0, 1, 2]),
+        diskwipe=dict(type='int', required=False, default="0", choices=[0, 1, 2]),
         exists=dict(type='bool', required=True)
     )
 
