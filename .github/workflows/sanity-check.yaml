@@ -1,0 +1,14 @@
+name: run sanity check
+run-name: ${{ github.actor }} did push so lets sanity check
+on: [push]
+jobs:
+  sanity-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: ls $GITHUB_WORKSPACE
+      - run: cd $GITHUB_WORKSPACE
+      - run: ansible-galaxy collection build ibm/zvm_ansible
+      - run: ansible-galaxy collection install ./ibm-zvm_ansible*.tar.gz
+      - run: cd ~/.ansible/collections/ansible_collections/ibm/zvm_ansible
+      - run: ansible-test sanity --requirements
