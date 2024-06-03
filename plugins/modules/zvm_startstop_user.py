@@ -187,8 +187,9 @@ def run_module():
             smapi_down_cmd.append("-T")
             smapi_down_cmd.append(module.params['name'])
             if module.params['stoptime'] is not None:
-                smapi_down_cmd.append("-f")
+                smapi_down_cmd.append('"-f WITHIN')
                 smapi_down_cmd.append(str(module.params['stoptime']))
+                smapi_down_cmd.append('"')
 
             # check_rc=False because if we get rerun idempotently this may fail with 'not running'
             smcli_results = module.run_command(smapi_down_cmd, check_rc=False)
@@ -216,7 +217,7 @@ def run_module():
         module.exit_json(**result)
 
     if result['return_code'] >= 1:
-        notreally_errs = ["Image already active", "HCPUSO045E", "not logged on"]
+        notreally_errs = ["Image already active", "Image not active", "HCPUSO045E", "not logged on", "HCPLGA054E"]
         # notreally_errs is a list of VM error messages that are OK within this contect
         noterror_count = 0
 
