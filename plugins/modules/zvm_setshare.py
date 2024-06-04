@@ -25,7 +25,8 @@ version_added: "0.0.3"
 
 description: an Ansible module for changing the z/VM SHARE setting of a virtual machine.
     this allows finer grained control of priority of virtual machines relative to each other.
-    Note that not all CP SET SHARE options are implemented, just the ability to use RELATIVE and ABSOLUTE for all processor flavors in the virtual machine configuration.
+    Note that not all CP SET SHARE options are implemented, just the ability to use RELATIVE and ABSOLUTE for all processor flavors
+    in the virtual machine configuration.
 
 options:
     name:
@@ -78,12 +79,12 @@ EXAMPLES = r'''
 
 RETURN = r'''
 return_code:
-    description: the integer return code from the SMAPI function. 0=success
+    description: the integer return code from the SMAPI function.
     returned: always
     type: int
     sample: 0
 reason_code:
-    description: the integer reason code from the SMAPI function. 0=success
+    description: the integer reason code from the SMAPI function.
     returned: always
     type: int
     sample: 0
@@ -91,7 +92,16 @@ return_stdout:
     description: messages captured by the SMAPI function while running the requested command
     returned: always
     type: str
-    sample: "USER JTU002  :  CP   ABSOLUTE SHARE = 9%\n                      MAXIMUM SHARE = NOLIMIT\n                ZAAP ABSOLUTE SHARE = 9%\n                      MAXIMUM SHARE = NOLIMIT\n                IFL  ABSOLUTE SHARE = 9%\n                      MAXIMUM SHARE = NOLIMIT\n                ICF  ABSOLUTE SHARE = 9%\n                      MAXIMUM SHARE = NOLIMIT\n                ZIIP ABSOLUTE SHARE = 9%\n                      MAXIMUM SHARE = NOLIMIT\n"
+    sample: "USER JTU002  :  CP   ABSOLUTE SHARE = 9%\n
+                MAXIMUM SHARE = NOLIMIT\n
+                ZAAP ABSOLUTE SHARE = 9%\n
+                MAXIMUM SHARE = NOLIMIT\n
+                IFL  ABSOLUTE SHARE = 9%\n
+                MAXIMUM SHARE = NOLIMIT\n
+                ICF  ABSOLUTE SHARE = 9%\n
+                MAXIMUM SHARE = NOLIMIT\n
+                ZIIP ABSOLUTE SHARE = 9%\n
+                MAXIMUM SHARE = NOLIMIT\n"
 '''
 
 
