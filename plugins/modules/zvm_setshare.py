@@ -23,10 +23,10 @@ short_description: z/VM User CP SET SHARE priority management Ansible Module
 
 version_added: "0.0.3"
 
-description: an Ansible module for changing the z/VM SHARE setting of a virtual machine.
+description: "an Ansible module for changing the z/VM SHARE setting of a virtual machine.
     this allows finer grained control of priority of virtual machines relative to each other.
     Note that not all CP SET SHARE options are implemented, just the ability to use RELATIVE and ABSOLUTE for all processor flavors
-    in the virtual machine configuration.
+    in the virtual machine configuration."
 
 options:
     name:
