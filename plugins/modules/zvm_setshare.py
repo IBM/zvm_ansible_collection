@@ -49,6 +49,7 @@ options:
     sharetype:
         description: this is how we are applying the share value vs other virtual machines: RELative ot ABSolute
         required: true
+        type: str
         choices:
             - 'REL'
             - 'ABS'
