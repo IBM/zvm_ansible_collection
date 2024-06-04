@@ -25,7 +25,7 @@ version_added: "0.0.3"
 
 description: an Ansible module for changing the z/VM SHARE setting of a virtual machine.
     this allows finer grained control of priority of virtual machines relative to each other.
-    Note that not all CP SET SHARE options are implemented, just the ability to use RELATIVE <integer> and ABSOLUTE <integer>% for all processor flavors in the virtual machine configuration.
+    Note that not all CP SET SHARE options are implemented, just the ability to use RELATIVE and ABSOLUTE for all processor flavors in the virtual machine configuration.
 
 options:
     name:
@@ -66,12 +66,12 @@ author:
 EXAMPLES = r'''
 - name: set high relative prio
   zvm_setshare:
-    name: '{{ name }}'
-    zvmhost: 'lticvmc.localnet.net'
+    name: lxguest2
+    zvmhost: lticvmc.example.net
     port: 44444
     authuser: mapauth
     authpass: '{{ mappassw }}'
-    sharetype: 'REL'
+    sharetype: REL
     shareval: 250
 '''
 
