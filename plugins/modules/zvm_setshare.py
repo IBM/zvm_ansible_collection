@@ -23,13 +23,6 @@ short_description: z/VM User CP SET SHARE priority management Ansible Module
 
 version_added: "0.0.3"
 
-description: an Ansible module for changing the z/VM SHARE setting of a virtual machine.
-
-seealso:
-    - name: IBM z/VM SMAPI documentation
-      description: Reference for SMAPI application developers
-      link: https://www.ibm.com/docs/en/zvm/7.3?topic=reference-socket-application-programming-interfaces
-
 author:
     - Jay Brenneman (@rjbrenn)
 '''
