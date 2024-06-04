@@ -23,7 +23,9 @@ short_description: z/VM User CP SET SHARE priority management Ansible Module
 
 version_added: "0.0.3"
 
-description: an Ansible module for changing the z/VM SHARE setting of a virtual machine. this allows finer grained control of priority of virtual machines relative to each other. Note that not all CP SET SHARE options are implemented, just the ability to use RELATIVE <integer> and ABSOLUTE <integer>% for all processor flavors in the virtual machine configuration.
+description: an Ansible module for changing the z/VM SHARE setting of a virtual machine.
+    this allows finer grained control of priority of virtual machines relative to each other.
+    Note that not all CP SET SHARE options are implemented, just the ability to use RELATIVE <integer> and ABSOLUTE <integer>% for all processor flavors in the virtual machine configuration.
 
 options:
     name:
@@ -62,7 +64,7 @@ author:
 '''
 
 EXAMPLES = r'''
-- name: high relative prio
+- name: set high relative prio
   zvm_setshare:
     name: '{{ name }}'
     zvmhost: 'lticvmc.localnet.net'
@@ -71,33 +73,6 @@ EXAMPLES = r'''
     authpass: '{{ mappassw }}'
     sharetype: 'REL'
     shareval: 250
-- name: higher relative prio
-  zvm_setshare:
-    name: '{{ name }}'
-    zvmhost: 'lticvmc.localnet.net'
-    port: 44444
-    authuser: mapauth
-    authpass: '{{ mappassw }}'
-    sharetype: 'REL'
-    shareval: 2500
-- name: low relative prio
-  zvm_setshare:
-    name: '{{ name }}'
-    zvmhost: 'lticvmc.localnet.net'
-    port: 44444
-    authuser: mapauth
-    authpass: '{{ mappassw }}'
-   sharetype: 'REL'
-    shareval: 25
-- name: absolute priority 9% of machine capacity
-  zvm_setshare:
-    name: '{{ name }}'
-    zvmhost: 'lticvmc.localnet.net'
-    port: 44444
-    authuser: mapauth
-    authpass: '{{ mappassw }}'
-    sharetype: 'ABS'
-    shareval: 9
 '''
 
 
