@@ -106,7 +106,7 @@ return_stdout:
 
 
 from ansible.module_utils.basic import AnsibleModule
-from ansible_collections.ibm.zvm_ansible.plugins.module_utils.psmapi import(call_client)
+from ansible_collections.ibm.zvm_ansible.plugins.module_utils.psmapi import (call_client)
 
 
 def run_module():
@@ -146,11 +146,11 @@ def run_module():
         # if ABS then we need to append a % to the shareval
         cmd_string += str(module.params['shareval']) + "%"
 
-    smcli_results = call_client( module.params['zvmhost'],  \
-                                 module.params['port'],     \
-                                 module.params['authuser'], \
-                                 module.params['authpass'], \
-                                 module.params['name'], "Cp_SetShare", cmd_string)
+    smcli_results = call_client(module.params['zvmhost'],
+                                module.params['port'],
+                                module.params['authuser'],
+                                module.params['authpass'],
+                                module.params['name'], "Cp_SetShare", cmd_string)
     result['return_code'] = smcli_results[0]
     result['reason_code'] = smcli_results[1]
     result['return_stdout'] = smcli_results[2]
