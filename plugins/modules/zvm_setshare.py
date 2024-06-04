@@ -29,9 +29,8 @@ options:
     name:
         description: this is the target who will have their priority changed
         required: true
-        type: str
     zvmhost:
-        description: the hostname of the z/VM system where the target is running
+        description: the hostname of the zVM system where the target is running
         required: true
         type: str
     port:
@@ -39,11 +38,11 @@ options:
         required: true
         type: int
     authuser:
-        description: the z/VM user in VSMWORK1 AUTHLIST who is authorized to call this SMAPI function
+        description: the zVM user in VSMWORK1 AUTHLIST who is authorized to call this SMAPI function
         required: true
         type: str
     authpass:
-        description: the z/VM users password for authuser
+        description: the zVM users password for authuser
         required: true
         type: str
     sharetype:
