@@ -17,16 +17,117 @@ __metaclass__ = type
 
 
 DOCUMENTATION = r'''
+module: zvm_setshare
+
+short_description: z/VM User CP SET SHARE priority management Ansible Module
+
+version_added: "0.0.3"
+
+description: an Ansible module for changing the z/VM SHARE setting of a virtual machine. this allows finer grained control of priority of virtual machines relative to each other. Note that not all CP SET SHARE options are implemented, just the ability to use RELATIVE <integer> and ABSOLUTE <integer>% for all processor flavors in the virtual machine configuration.
+
+options:
+    name:
+        description: this is the target who will have their priority changed
+        required: true
+        type: str
+    zvmhost:
+        description: the hostname of the z/VM system where the target is running
+        required: true
+        type: str
+    port:
+        description: the TCP port number where SMAPI listens
+        required: true
+        type: int
+    authuser:
+        description: the z/VM user in VSMWORK1 AUTHLIST who is authorized to call this SMAPI function
+        required: true
+        type: str
+    authpass:
+        description: the z/VM user's password for authuser
+        required: true
+        type: str
+    sharetype:
+        description: this is how we are applying the share value vs other virtual machines: RELative ot ABSolute
+        required: true
+        choices:
+            - 'REL'
+            - 'ABS'
+    shareval:
+        description: the value of the target user's share
+        required: true
+        type: int
+
+seealso:
+    - name: IBM z/VM SMAPI documentation
+      description: Reference for SMAPI application developers
+      link: https://www.ibm.com/docs/en/zvm/7.3?topic=reference-socket-application-programming-interfaces
+
 author:
     - Jay Brenneman (@rjbrenn)
 '''
 
 
 EXAMPLES = r'''
+- name: play with setting share values
+  collections:
+    - "ibm.zvm_ansible"
+  hosts: newlinuxes
+  tasks:
+  - name: high relative prio
+    zvm_setshare:
+      name: '{{ name }}'
+      zvmhost: 'lticvmc.localnet.net'
+      port: 44444
+      authuser: mapauth
+      authpass: '{{ mappassw }}'
+      sharetype: 'REL'
+      shareval: 250
+  - name: higher relative prio
+    zvm_setshare:
+      name: '{{ name }}'
+      zvmhost: 'lticvmc.localnet.net'
+      port: 44444
+      authuser: mapauth
+      authpass: '{{ mappassw }}'
+      sharetype: 'REL'
+      shareval: 2500
+  - name: low relative prio
+    zvm_setshare:
+      name: '{{ name }}'
+      zvmhost: 'lticvmc.localnet.net'
+      port: 44444
+      authuser: mapauth
+      authpass: '{{ mappassw }}'
+      sharetype: 'REL'
+      shareval: 25
+  - name: absolute priority 9% of machine capacity
+    zvm_setshare:
+      name: '{{ name }}'
+      zvmhost: 'lticvmc.localnet.net'
+      port: 44444
+      authuser: mapauth
+      authpass: '{{ mappassw }}'
+      sharetype: 'ABS'
+      shareval: 9
 '''
 
 
 RETURN = r'''
+return_code:
+    description: the integer return code from the SMAPI function. 0=success
+    returned: always
+    type: int
+    sample: 0
+reason_code:
+    description: the integer reason code from the SMAPI function. 0=success
+    returned: always
+    type: int
+    sample: 0
+return_stdout:
+    description: messages captured by the SMAPI function while running the requested command
+    returned: always
+    type: str
+    sample: USER JTU002  :  CP   ABSOLUTE SHARE = 9%\n                      MAXIMUM SHARE = NOLIMIT\n                ZAAP ABSOLUTE SHARE = 9%\n                      MAXIMUM SHARE = NOLIMIT\n                IFL  ABSOLUTE SHARE = 9%\n                      MAXIMUM SHARE = NOLIMIT\n                ICF  ABSOLUTE SHARE = 9%\n                      MAXIMUM SHARE = NOLIMIT\n                ZIIP ABSOLUTE SHARE = 9%\n                      MAXIMUM SHARE = NOLIMIT\n
 '''
 
 
