@@ -25,38 +25,6 @@ version_added: "0.0.3"
 
 description: an Ansible module for changing the z/VM SHARE setting of a virtual machine.
 
-options:
-    name:
-        description: this is the target who will have their priority changed
-        required: true
-    zvmhost:
-        description: the hostname of the zVM system where the target is running
-        required: true
-        type: str
-    port:
-        description: the TCP port number where SMAPI listens
-        required: true
-        type: int
-    authuser:
-        description: the zVM user in VSMWORK1 AUTHLIST who is authorized to call this SMAPI function
-        required: true
-        type: str
-    authpass:
-        description: the zVM users password for authuser
-        required: true
-        type: str
-    sharetype:
-        description: this is how we are applying the share value vs other virtual machines: RELative ot ABSolute
-        required: true
-        type: str
-        choices:
-            - REL
-            - ABS
-    shareval:
-        description: the value of the target users share
-        required: true
-        type: int
-
 seealso:
     - name: IBM z/VM SMAPI documentation
       description: Reference for SMAPI application developers
