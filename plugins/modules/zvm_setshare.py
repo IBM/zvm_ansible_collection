@@ -46,7 +46,7 @@ options:
         required: true
         type: str
     authpass:
-        description: the z/VM user's password for authuser
+        description: the z/VM users password for authuser
         required: true
         type: str
     sharetype:
@@ -56,7 +56,7 @@ options:
             - 'REL'
             - 'ABS'
     shareval:
-        description: the value of the target user's share
+        description: the value of the target users share
         required: true
         type: int
 
