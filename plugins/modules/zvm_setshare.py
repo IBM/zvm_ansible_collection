@@ -50,7 +50,8 @@ options:
         required: true
         type: str
     sharetype:
-        description: this is how we are applying the share value vs other virtual machines: RELative ot ABSolute
+        description: this is how we are applying the share value vs other virtual machines
+            specify either REL for RELative or ABS for ABSolute
         required: true
         choices:
             - 'REL'

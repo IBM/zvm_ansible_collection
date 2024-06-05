@@ -5,3 +5,6 @@ plugins/modules/zvm_reader_empty.py validate-modules:missing-gplv3-license # Lic
 plugins/modules/zvm_startstop_user.py validate-modules:missing-gplv3-license # Licensed under Apache 2.0
 plugins/modules/zvm_update_user.py validate-modules:missing-gplv3-license # Licensed under Apache 2.0
 plugins/modules/zvm_user.py validate-modules:missing-gplv3-license # Licensed under Apache 2.0
+plugins/modules/zvm_dedicate_dev.py validate-modules:missing-gplv3-license # Licensed under Apache 2.0
+plugins/modules/zvm_dirm_nicdef.py validate-modules:missing-gplv3-license # Licensed under Apache 2.0
+plugins/modules/zvm_setshare.py validate-modules:missing-gplv3-license # Licensed under Apache 2.0

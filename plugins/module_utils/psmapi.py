@@ -17,7 +17,6 @@ __metaclass__ = type
 
 import socket
 import ssl
-import sys
 
 
 def call_client(host, port, authuser, authpass, target, apicommand, *args):
@@ -36,6 +35,7 @@ def call_client(host, port, authuser, authpass, target, apicommand, *args):
     return_code = 9999
     reason_code = 9999
     message_lines = ""
+    thecommand = ""
 
     # print("num of args is %s" % len(args))
     if len(args) == 1:
