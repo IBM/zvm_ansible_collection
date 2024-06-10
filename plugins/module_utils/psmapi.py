@@ -25,7 +25,7 @@ def call_client(host, port, authuser, authpass, target, apicommand, *args):
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     ssock = context.wrap_socket(sock, server_hostname=host)
     server_address = (host, port)
-    print("Connecting to server %s port %s" % server_address)
+    # print("Connecting to server %s port %s" % server_address)
     ssock.connect(server_address)
 
     readback = 0
@@ -41,7 +41,7 @@ def call_client(host, port, authuser, authpass, target, apicommand, *args):
     if len(args) == 1:
         thecommand = args[0]
     if len(args) > 1:
-        print("ERROR: What the heck more than 1 command string ?")
+        # print("ERROR: What the heck more than 1 command string ?")
         return (return_code)
 
     print(thecommand)
@@ -68,17 +68,17 @@ def call_client(host, port, authuser, authpass, target, apicommand, *args):
     try:
         # be careful with exposing the full cmdbytes because it contains the unencrypted password
         # print("Sending %s" % cmdbytes)
-        print("Sending the command string to SMAPI")
+        # print("Sending the command string to SMAPI")
         ssock.sendall(cmdbytes)
         message = ""
         while numzeros < 1:
-            print("Reading a response from SMAPI")
+            # print("Reading a response from SMAPI")
             reqnum = ssock.recv(4096)
-            print("pulling off request number")
+            # print("pulling off request number")
             request_num = int.from_bytes(reqnum, byteorder='big')
             # print("raw reqnum: %s" % reqnum)
             # print("int reqnum: %i" % request_num)
-            print("pulling off full response")
+            # print("pulling off full response")
             response = ssock.recv(4096)
             # print("Response:")
             # print(response)
@@ -101,7 +101,7 @@ def call_client(host, port, authuser, authpass, target, apicommand, *args):
             # messages is a pointer into the response string, we will move it along
             # the string to pull apart the individual message lines
             messages = response[20:]
-            print("SMAPI Response contained VM command response messages, parsing")
+            # print("SMAPI Response contained VM command response messages, parsing")
             i = 0
             while i < num_messages:
                 # message format is <mesg_line_length><message>
@@ -126,7 +126,7 @@ def call_client(host, port, authuser, authpass, target, apicommand, *args):
     except Exception as e:
         print("Some Exception %s" % str(e))
     finally:
-        print("Closing connection")
+        # print("Closing connection")
         ssock.close()
 
     results = []

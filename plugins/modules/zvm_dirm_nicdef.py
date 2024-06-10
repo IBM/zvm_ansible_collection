@@ -54,6 +54,7 @@ options:
     nictype:
         description: device type - QDIO or HIPERsocket
         required: false
+        type: str
         choices:
             - 'QDIO'
             - 'HIPER'
