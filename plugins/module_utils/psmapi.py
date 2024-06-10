@@ -15,6 +15,7 @@
 from __future__ import (absolute_import, division, print_function)
 __metaclass__ = type
 
+from ansible.module_utils.basic import AnsibleModule
 import socket
 import ssl
 
@@ -44,12 +45,12 @@ def call_client(host, port, authuser, authpass, target, apicommand, *args):
         # print("ERROR: What the heck more than 1 command string ?")
         return (return_code)
 
-    print(thecommand)
+    # print(thecommand)
 
     cmdstring = bytes()
     cmdbytes = bytes()
 
-    print("Assembling the command string")
+    # print("Assembling the command string")
     cmdstring += len(apicommand).to_bytes(4, byteorder='big') + apicommand.encode('ASCII')
     # print(cmdstring)
     cmdstring += len(authuser).to_bytes(4, byteorder='big') + authuser.encode('ASCII')
@@ -122,9 +123,9 @@ def call_client(host, port, authuser, authpass, target, apicommand, *args):
             numzeros += 1
 
     except socket.error as e:
-        print("Socket Error %s" % str(e))
+        module.debug("Socket Error %s" % str(e))
     except Exception as e:
-        print("Some Exception %s" % str(e))
+        module.debug("Some Exception %s" % str(e))
     finally:
         # print("Closing connection")
         ssock.close()
