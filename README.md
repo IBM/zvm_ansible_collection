@@ -29,8 +29,8 @@ zvm_startstop_user.py : vmcp xautolog command to start a virtual machine with th
 
 Since these modules use TCPIP connectivity to converse with z/VM SMAPI and pass z/VM userids and passwords for authorization, the SMAPI port must be SSL protected on the z/VM side. The z/VM userid used for authorization also must be authorized to issue SMAPI commands. 
 
-zvm_setshare.py : CP_SetShare - Local SMAPI extension, requires rexx/setshare.exec on target z/VM and setup to enable it in SMAPI
-zvm_dirm_nicdef.py : Dirm_Nicdef - Local SMAPI extension, requires rexx/nicdef.exec on target z/VM and setup to enable it in SMAPI 
+zvm_setshare.py : CP_SetShare - Local SMAPI extension - requires rexx/setshare.exec on target z/VM and setup to enable it in SMAPI  
+zvm_dirm_nicdef.py : Dirm_Nicdef - Local SMAPI extension - requires rexx/nicdef.exec on target z/VM and setup to enable it in SMAPI  
 
 
 ## installing
