@@ -21,6 +21,7 @@ import ssl
 
 def call_client(host, port, authuser, authpass, target, apicommand, *args):
     context = ssl.SSLContext(ssl.PROTOCOL_TLS_CLIENT)
+    context.minimum_version = ssl.TLSVersion.TLSv1_2
     context.load_default_certs()
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     ssock = context.wrap_socket(sock, server_hostname=host)
