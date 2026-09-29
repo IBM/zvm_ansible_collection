@@ -1,6 +1,10 @@
 name: run sanity check
 run-name: ${{ github.actor }} did push so lets sanity check
 on: [push]
+
+permissions:
+  contents: read
+
 jobs:
   sanity-check:
     runs-on: ubuntu-latest
